@@ -5,7 +5,9 @@ import com.xyy.sms.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @EnableAutoConfiguration
 @ComponentScan("com.xyy.sms")
+@EnableJpaRepositories(basePackages={"com.xyy.sms.dao"})
+@EntityScan(basePackages="com.xyy.sms.model")
 public class SampleApplication {
     @Autowired
     MessageService messageService;
@@ -24,7 +28,7 @@ public class SampleApplication {
     @ResponseBody
     String home() {
         MessageDTO message =new MessageDTO ();
-        message.setPhone("18721115160");
+        message.setPhone("123456787978");
         message.setCode("007");
         message.setParameter("短信内容");
         messageService.sendMessage(message);

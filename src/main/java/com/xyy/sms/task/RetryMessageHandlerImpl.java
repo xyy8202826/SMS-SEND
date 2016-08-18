@@ -23,7 +23,7 @@ public class RetryMessageHandlerImpl implements  MessageHandler {
         Random random=new Random();
         int rand=random.nextInt(10);
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
