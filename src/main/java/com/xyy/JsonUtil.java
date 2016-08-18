@@ -3,8 +3,6 @@ package com.xyy;
 import jodd.json.JsonParser;
 import jodd.json.JsonSerializer;
 
-import java.util.Random;
-
 /**
  * <p>
  * </p>
@@ -19,9 +17,5 @@ public class JsonUtil {
     public static <T> T parse(String json,Class<T> type){
         return new JsonParser().parse(json,type);
     }
-    public static void main(String ... args){
-        Random random=new Random();
-        int rand=random.nextInt(10);
-        System.out.print(rand);
-    }
+
 }
