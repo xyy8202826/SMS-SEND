@@ -2,6 +2,8 @@ package com.xyy.sms;
 
 import com.xyy.sms.model.MessageDTO;
 import com.xyy.sms.service.MessageService;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ComponentScan("com.xyy.sms")
 @EnableJpaRepositories(basePackages={"com.xyy.sms.dao"})
 @EntityScan(basePackages="com.xyy.sms.model")
+@Slf4j
 public class SampleApplication {
     @Autowired
     MessageService messageService;
@@ -35,6 +38,8 @@ public class SampleApplication {
         return "Hello World!";
     }
     public static void main(String[] args) {
+        MDC.put("TRACE_LOG_ID","lakksjfkahsjfajsfgj");
+        log.info("SampleApplication start");
         SpringApplication.run(SampleApplication.class, args);
     }
 }

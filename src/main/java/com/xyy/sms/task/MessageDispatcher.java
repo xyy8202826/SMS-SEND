@@ -3,6 +3,7 @@ package com.xyy.sms.task;
 import com.xyy.Constant;
 import com.xyy.JsonUtil;
 import com.xyy.sms.model.MessageDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,9 @@ import java.util.concurrent.TimeUnit;
  * User: xuyuanye Date: 2016/8/18 Project: sms-send
  */
 @Component("messageDispatcher")
+@Slf4j
 public class MessageDispatcher implements Runnable {
-    private static  final Logger log= LoggerFactory.getLogger(MessageDispatcher.class);
+    //private static  final Logger log= LoggerFactory.getLogger(MessageDispatcher.class);
     /**
      * 初始线程处理数
      */

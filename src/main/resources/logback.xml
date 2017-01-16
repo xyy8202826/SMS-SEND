@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<Pattern>%d{yyyy-MM-dd HH:mm:ss} %-4relative [%thread] %-5level	%logger{35}:%line - %msg%n
-			</Pattern>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>NEUTRAL</onMismatch>
+		</filter>
+		<encoder charset="utf-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+			<!-- %.-1level 只显示信息级别的首字母,%-5level 左对齐显示信息级别全称 -->
+			<!-- 如需自定义关键字，用 %mdc{键名} 表示,程序中用MDC.put("键名","键值")设置，可动态设置 [%logger:%line]-->
+			<Pattern>[%date{yyyy-MM-dd HH:mm:ss}][%thread] [%-5level] %c{40} %line [%X{TRACE_LOG_ID}] %msg%n</Pattern>
 		</encoder>
 	</appender>
-	<root>
-		<level value="INFO" />
+	<!--
+	<logger name="logback"/>
+	-->
+	<root level="DEBUG" >
 		<appender-ref ref="consoleAppender" />
 	</root>
-</configuration>  
+
+</configuration>
